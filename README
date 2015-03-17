@@ -1,0 +1,9 @@
+The accept_dad sysctl seems to always default to 1 inside a nspawn
+container, no matter what its set to outside of it.
+
+This is probably a legit issue (systemd or kernel). This code is
+a workaround.
+
+Small binary that remounts /sys/proc to rw, tweaks accept_dad settings
+and then remounts to ro. Why did I bother writing this in c? Hell if
+I know...
