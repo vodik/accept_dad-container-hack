@@ -1,0 +1,10 @@
+[Unit]
+Description=Workaround for setting accept_dad inside a systemd-nspawn container
+Before=network.target
+
+[Service]
+ExecStart=/usr/bin/accept_dad_hack
+Type=oneshot
+
+[Install]
+WantedBy=network.target
