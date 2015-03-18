@@ -96,7 +96,9 @@ int main(void)
 
     int flags = 0, rc = 0;
 
-    if (proc) {
+    if (!proc)
+        warnx("Failed to find /proc/sys mount");
+    else {
         flags = read_flags(proc->mnt_opts) & ~MS_RDONLY;
 
         if (mount(NULL, proc->mnt_dir, "none", MS_REMOUNT | flags, NULL) < 0)
